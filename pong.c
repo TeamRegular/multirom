@@ -116,15 +116,18 @@ void pong(void)
     {
         switch(get_last_key())
         {
+            case KEY_BUTTON_A:
             case KEY_POWER:
                 run = 0;
                 break;
+            case KEY_DPAD_UP:
             case KEY_VOLUMEUP:
                 ball_speed += 5;
                 pong_spawn_ball(rand()%2);
                 pong_calc_movement();
                 step = 0;
                 break;
+            case KEY_DPAD_DOWN:
             case KEY_VOLUMEDOWN:
                 if(ball_speed > 5)
                     ball_speed -= 5;

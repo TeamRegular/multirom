@@ -143,7 +143,7 @@ int multirom_ui(struct multirom_status *s, struct multirom_rom **to_boot)
         fb_force_draw();
 
         start_input_thread();
-        while(wait_for_key() != KEY_POWER);
+        while((wait_for_key() != KEY_BUTTON_A) || (wait_for_key() != KEY_POWER));
         stop_input_thread();
 
         fb_clear();

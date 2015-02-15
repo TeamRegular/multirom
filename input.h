@@ -24,6 +24,9 @@
 #define KEY_VOLUMEUP 115
 #define KEY_VOLUMEDOWN 114
 #define KEY_POWER 116
+#define KEY_DPAD_UP 103
+#define KEY_DPAD_DOWN 108
+#define KEY_BUTTON_A 272
 
 enum
 {

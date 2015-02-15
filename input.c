@@ -171,16 +171,18 @@ static int ev_get(struct input_event *ev, unsigned dont_wait)
     return -1;
 }
 
-#define IS_KEY_HANDLED(key) (key >= KEY_VOLUMEDOWN && key <= KEY_POWER)
+#define IS_KEY_HANDLED(key) (((key >= KEY_DPAD_DOWN) || (key >= KEY_VOLUMEDOWN)) && ((key <= KEY_BUTTON_A) || (key <= KEY_POWER)))
 
 static int screenshot_trigger_handle_keyevent(int code, int pressed)
 {
     static int power_pressed = 0;
     switch(code)
     {
+        case KEY_BUTTON_A:
         case KEY_POWER:
             power_pressed = pressed;
             break;
+        case KEY_DPAD_DOWN:
         case KEY_VOLUMEDOWN:
             if(power_pressed && pressed)
             {
@@ -723,12 +725,15 @@ int keyaction_handle_keyevent(int key, int press)
     int act = KEYACT_NONE;
     switch(key)
     {
+        case KEY_BUTTON_A:
         case KEY_POWER:
             act = KEYACT_CONFIRM;
             break;
+        case KEY_DPAD_DOWN:
         case KEY_VOLUMEDOWN:
             act = KEYACT_DOWN;
             break;
+        case KEY_DPAD_UP:
         case KEY_VOLUMEUP:
             act = KEYACT_UP;
             break;

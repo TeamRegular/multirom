@@ -306,7 +306,7 @@ void multirom_emergency_reboot(void)
 
     // Wait for power key
     start_input_thread();
-    while(wait_for_key() != KEY_POWER);
+    while((wait_for_key() != KEY_BUTTON_A) || (wait_for_key() != KEY_POWER));
     stop_input_thread();
 
     fb_clear();
